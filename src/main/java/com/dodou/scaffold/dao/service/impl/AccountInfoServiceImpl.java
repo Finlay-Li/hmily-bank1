@@ -31,7 +31,7 @@ public class AccountInfoServiceImpl extends ServiceImpl implements AccountInfoSe
      * try幂等校验
      * try悬挂处理
      * 检查余额是够扣减金额
-     * 扣减金额：先扣钱，再给李四加钱，因此没预留资源，从而幂等在try上操作（但是try又不会重试，还幂等个啥？）
+     * 扣减金额：先扣钱，再给李四加钱，因此没预留资源，从而幂等在try上操作（但是try又不会重试，还幂等个啥？）--->看了源码，定时任务确认不会重试try，因为try的异常根本就不记录，但是除开TCC之外的其他重复执行，你就不考虑？因为你没预留资源呀！
      * */
     @Override
     @Transactional
